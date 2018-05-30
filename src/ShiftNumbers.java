@@ -4,8 +4,8 @@ import java.util.*;
 /**
  * Write a description of class Print2DArray here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ian Bryan
+ * @version V1
  */
 public class ShiftNumbers
 {
@@ -40,51 +40,6 @@ public class ShiftNumbers
 			System.out.print("+-");
 		}
 		System.out.println("+");  
-
-
-	}
-
-	/*
-	 * 
-	 * 
-	 * */
-	public static int[][] random(int N, int start, int end){
-
-	}
-
-	/*
-	 * 
-	 * 
-	 * 
-	 * */
-	public static int rowSum(int [][] a, int i) {
-
-
-	}
-
-	/*
-	 * 
-	 * 
-	 * */
-	public static int colSum(int[][] a, int j) {
-
-
-	}
-
-	/*
-	 * 
-	 * 
-	 * */
-	public static boolean isSquare() {
-
-
-	}
-
-	/*
-	 * 
-	 * 
-	 * */
-	public static boolean isLatin(int[][] a) {
 
 
 	}

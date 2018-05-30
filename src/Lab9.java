@@ -22,9 +22,7 @@ public class Lab9  {
         System.out.println("\n Sum of columns  = " + columSum);
 
         isSquare(a);
-
-
-
+        
         int[][] nonsquare = { {1,2,3}, {4,5}, {6,7,8,9} };
         int[][] notlatin = { {2,1,3}, {2,3,1}, {3,1,2} };
         int[][] latin = { {1,2,3}, {2,3,1}, {3,1,2} };
@@ -33,63 +31,108 @@ public class Lab9  {
         int[][] perfectSquare = { {1, 2, 3, 4}, { 5, 6, 7, 8}, { 9, 10, 11, 12}, { 13, 14, 15, 16}};
 
         // Your tests, here are 2 to start with
-        isLatin(nonsquare);
-        isSquare(perfectSquare);
-
-
+        //isLatin(nonsquare);
+        //isSquare(nonsquare);
 
     }
 
-    // (a) int[][] random(int N, int start, int end) returns an N-by-N matrix of
-    // random integers ranging from start to end;
+	/*
+	 * <p>This method will return a 2D array with random
+	 * numbers in rows and columns within a specified range.
+	 * 
+	 * Using the Random methods ints(arg1, arg2) which takes two integer arguments
+	 * and findFirst which operates on the IntStream to allow for conversion (casting)
+	 * to integer values. Then add them to the array.
+	 * </p>
+	 * 
+	 * @param N - The random number of rows and columns to create an
+	 * array with.
+	 * @param start - the first cell in the row
+	 * @param end - the last cell in the row
+	 * */
+	public static int[][] randomMatrix(int N, int start, int end){
+		int[][] a = new int[N][N];
+		Random r = new Random();
+		for(int i=0;i<a.length;i++) {
+			for(int j=0;j<i;j++) {
+				a[i][j] = r.ints(start, (end+1)).findFirst().getAsInt();
+			}
+		}
+		return a;
+	}
 
-    public static int [][]randomMatrix (int N, int start, int end) {
+	/*
+	 * <p>This method will return the sum of all of the elements
+	 * within a given row.
+	 * 
+	 * The rowSum is set to 0 for each column that's passed until
+	 * it reaches the 3rd row. Then the final iteration returns
+	 * the sum of the third row and exits
+	 * </p>
+	 * 
+	 * @param a - a 2D array that is iterated over row by row
+	 * @param i - the row to inspect
+	 * */
+	public static int rowSum(int [][] a, int i) {
+		int rowSum = 0;
+		for(int x=0;x<a.length;x++) {
+			rowSum = 0;
+			for(int j=0;j<=i;j++) {
+				rowSum += a[i][j];
+			}
+		}
+		return rowSum;
+	}
 
-       // Your logic goes here
-    }
+	/*
+	 * <p>This method will do something similar as the previous method, but instead
+	 * will total up the sum of a column specified by the parameter 'j'</p>
+	 * 
+	 * @param a - a 2D array that is iterated over to get the sum of a column
+	 * @param j - the column to inspect
+	 * */
+	public static int colSum(int[][] a, int j) {
+		int colSum = 0;
+		for(int x=0;x<a[j].length;x++) {
+			colSum += a[j][x];
+		}
+		return colSum;
+	}
 
-    // Generates a new random integer between 0 and end when called to be used in part(a)
-    public static int randomGenerator( int end, int start){
+	/*
+	 * This method will return true or false depending on the condition that array is a 
+	 * square meaning the number of rows and columns are the same.
+	 * 
+	 * */
+	public static boolean isSquare(int[][] a) {
+		boolean isSameSize = false;
+		int rowSize = a.length;
+		for(int i=0;i<a.length;i++) {
+			if(a[i].length == rowSize) {
+				System.out.println("# of items in row: " + a[i].length
+						+ "||# of colms: " + rowSize);
+				isSameSize = true;
+				
+				return true;
+			}else {
+				return false;
+			}
+		}
+		return isSameSize;
+	}
 
-        // Your code goes here
+	/*
+	 * This method will return true or false depending on the condition that the columns
+	 * and rows contain values 1-N without repeats. 
+	 * 
+	 * Example: 1 2 3 4 5
+	 * 			2 3 4 5 6
+	 * 			3 4 5 6 7
+	 * 
+	 * */
+	public static boolean isLatin(int[][] a) {
 
-    }
 
-    // (b) int rowSum(int[][] a, int i) returns the sum of the elements in row i of the 2-D array a
-    public static int rowSum( int[][] a, int i) {
-
-        // Your logic goes here
-    }
-
-    // (c) int colSum(int[][] a, int j) returns the sum of the elements in column j of the 2-D array a
-    public static int colSum( int[][] a, int j) {
-
-        // Your logic goes here
-    }
-
-    // (d) boolean isSquare(int[][] a) returns true if the 2-D array a is square (i.e. the number of
-    // rows and columns are the same)
-    public static boolean isSquare(int[][] a) {
-
-        // Your logic goes here
-
-    }
-
-    // (e) boolean isLatin(int[][] a) returns true if the 2-D array a is a Latin square
-    // (i.e. an n-by-n matrix such that each row and each column contains the values
-    // from 1 through n with no repeats)
-    public static boolean isLatin(int[][] a) {
-
-        // Your logic goes here
-    }
-
-    // 2. In a different class named ShiftNumbers.java write a program that takes integer M as the number of both rows and columns for your 2D array.
-    // Create the same exact  2D array as displayed in Lab handout.
+	}
 
   }
-
-
-
-
-
-
