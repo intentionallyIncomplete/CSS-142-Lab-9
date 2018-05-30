@@ -14,33 +14,40 @@ public class ShiftNumbers
 
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Enter an integer, then press Enter");
-		int N = keyboard.nextInt();
+		int M = keyboard.nextInt();
 
-		int[][] allneg = { {-10,-12,-3}, {-4,-5,-6,-8}, {-7,-8} };
-		int[][] nonsquare = { {1,2,3}, {4,5}, {6,7,8,9} };
-		int[][] latin = { {1,2,3}, {2,3,1}, {3,1,2} };
-		int[][] notlatin = { {2,1,3}, {2,3,1}, {3,1,2} };
+		/*declaring new 2D array with M rows and columns*/
+		int[][] digits = new int[M][M];
 
-
-		// 1. Create your array dynamically here
-
-
-		// 2. Now, fill the 2D array with numbers 
-
-
-
-
-
-		// 3. Print your 2D array
-
-
-
-		// 4. print the lower border
-		for(int j = 0; j < digits[0].length; ++j) {
-			System.out.print("+-");
+		/*populating the array*/
+		for(int i=0;i<digits.length;i++) {
+			for(int j=0;j<digits[i].length;j++) {
+				digits[i][j] += j+1;
+			}
 		}
-		System.out.println("+");  
 
+		//		/*Lower border*/
+		//		for(int j = 0; j < digits[0].length; ++j) {
+		//			System.out.print("+-");
+		//		}
+		//		System.out.print("+");  
 
+		int[] lastElement = digits[digits.length-1];
+		int lastIndex = lastElement[lastElement.length-1];
+		System.out.println(lastIndex);
+		
+		/*print the array*/
+		for(int i=0;i<digits.length-1;i++) {
+			System.out.println();
+			/*Lower border*/
+			for(int x = 0; x < digits[0].length; x++) {
+				System.out.print("+-");
+			}
+			System.out.println("+");
+			
+			for(int j=0;j<digits[i].length;j++) {
+				System.out.print(digits[i][j]+"|");
+			}
+		}
 	}
 }
