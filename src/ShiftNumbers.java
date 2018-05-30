@@ -24,13 +24,7 @@ public class ShiftNumbers
 			for(int j=0;j<digits[i].length;j++) {
 				digits[i][j] += j+1;
 			}
-		}
-
-		//		/*Lower border*/
-		//		for(int j = 0; j < digits[0].length; ++j) {
-		//			System.out.print("+-");
-		//		}
-		//		System.out.print("+");  
+		} 
 
 		int[] lastElement = digits[digits.length-1];
 		int lastIndex = lastElement[lastElement.length-1];
