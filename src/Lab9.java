@@ -8,33 +8,63 @@ import java.util.Scanner;
  */
 public class Lab9  {
 
-    public static void main(String [] args) {
+	public static void main(String [] args) {
 
 
-        // Test random matrix of integers
-        int[][] a = randomMatrix (7, 20, 100);
-        // use the above array to test next rowSum()
-        int rowTotal = rowSum( a, 3);
-        System.out.println("\n Sum of row  = " + rowTotal);
+		// Test random matrix of integers
+		int[][] a = randomMatrix (7, 20, 100);
+		// use the above array to test next rowSum()
+		int rowTotal = rowSum( a, 3);
+		System.out.println("\n Sum of row  = " + rowTotal);
 
-        // use the above array to test next colSum()
-        int columSum = colSum( a, 4);
-        System.out.println("\n Sum of columns  = " + columSum);
+		// use the above array to test next colSum()
+		int columSum = colSum( a, 4);
+		System.out.println("\n Sum of columns  = " + columSum);
 
-        isSquare(a);
-        
-        int[][] nonsquare = { {1,2,3}, {4,5}, {6,7,8,9} };
-        int[][] notlatin = { {2,1,3}, {2,3,1}, {3,1,2} };
-        int[][] latin = { {1,2,3}, {2,3,1}, {3,1,2} };
-        int[][] allneg = { {-10,-12,-3}, {-4,-5,-6,-8}, {-7,-8} };
-        int[][] notSquare = { {10, 12, 3, 17}, { 4, 5, 16, 18}, { 7, 9, 10, 45} };
-        int[][] perfectSquare = { {1, 2, 3, 4}, { 5, 6, 7, 8}, { 9, 10, 11, 12}, { 13, 14, 15, 16}};
+		System.out.println("--------------------------\n"
+				+ "Using a[][] array to test isSquare()");
+		if(isSquare(a) == true) {
+			System.out.println("The number of rows and columns are equal");
+		}else {
+			System.out.println("The number of rows and columns are not equal");
+		}
 
-        // Your tests, here are 2 to start with
-        //isLatin(nonsquare);
-        //isSquare(nonsquare);
+		int[][] nonsquare = { {1,2,3}, {4,5}, {6,7,8,9} };
+		int[][] notlatin = { {2,1,3}, {2,3,1}, {3,1,2} };
+		int[][] latin = { {1,2,3}, {2,3,1}, {3,1,2} };
+		int[][] allneg = { {-10,-12,-3}, {-4,-5,-6,-8}, {-7,-8} };
+		int[][] notSquare = { {10, 12, 3, 17}, { 4, 5, 16, 18}, { 7, 9, 10, 45} };
+		int[][] perfectSquare = { {1, 2, 3, 4}, { 5, 6, 7, 8}, { 9, 10, 11, 12}, { 13, 14, 15, 16}};
 
-    }
+		System.out.println("--------------------------\n"
+				+ "Using latin[][] array to test isLatin()");
+		if(isLatin(latin) == false) {
+			System.out.println("The array is not a latin square");
+		}else {
+			System.out.println("The array is a latin square");
+		}
+		
+		System.out.println("--------------------------\n"
+				+ "Using nonsquare[][] array to test isSquare()");
+		if(isSquare(nonsquare) == true) {
+			System.out.println("The number of rows and columns are equal");
+		}else {
+			System.out.println("The number of rows and columns are not equal");
+		}
+		
+		System.out.println("--------------------------\n"
+				+ "Using perfectSquare[][] array to test colSum()");
+		
+		columSum = colSum(perfectSquare, 2);
+		System.out.println("\n Sum of columns  = " + columSum);
+		
+		System.out.println("--------------------------\n"
+				+ "Using latin[][] array to test rowSum()");
+		
+		rowTotal = rowSum( latin, 2);
+		System.out.println("\n Sum of row  = " + rowTotal);
+
+	}
 
 	/*
 	 * <p>This method will return a 2D array with random
@@ -109,13 +139,13 @@ public class Lab9  {
 		int rowSize = a.length;
 		for(int i=0;i<a.length;i++) {
 			if(a[i].length == rowSize) {
-				System.out.println("# of items in row: " + a[i].length
-						+ "||# of colms: " + rowSize);
+				//				System.out.println("# of items in row: " + a[i].length
+				//						+ "||# of colms: " + rowSize);
 				isSameSize = true;
-				
-				return true;
 			}else {
-				return false;
+				//				System.out.println("# of items in row: " + a[i].length
+				//						+ "||# of colms: " + rowSize);
+				isSameSize = false;
 			}
 		}
 		return isSameSize;
@@ -132,7 +162,15 @@ public class Lab9  {
 	 * */
 	public static boolean isLatin(int[][] a) {
 
-
+		for(int i=0;i<a.length;i++) {
+			for(int x=0; x<a[i].length; x++)  {
+				if(i!=x)   {
+					return false;
+				}else {
+					return true;
+				}
+			}
+		}
+		return true;
 	}
-
-  }
+}
